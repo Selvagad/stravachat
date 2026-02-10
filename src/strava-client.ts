@@ -1,18 +1,14 @@
-import "dotenv/config";
-
 const STRAVA_BASE_URL = "https://www.strava.com/api/v3";
 const TOKEN_URL = "https://www.strava.com/api/v3/oauth/token";
-
-const clientId = process.env.STRAVA_CLIENT_ID;
-const clientSecret = process.env.STRAVA_CLIENT_SECRET;
-const initialRefreshToken = process.env.STRAVA_REFRESH_TOKEN;
 
 let accessToken: string | null = null;
 let tokenExpiresAt = 0;
 let currentRefreshToken = "";
 
 async function refreshAccessToken(): Promise<void> {
-  const refreshToken = currentRefreshToken || initialRefreshToken;
+  const clientId = process.env.STRAVA_CLIENT_ID;
+  const clientSecret = process.env.STRAVA_CLIENT_SECRET;
+  const refreshToken = currentRefreshToken || process.env.STRAVA_REFRESH_TOKEN;
 
   if (!clientId || !clientSecret || !refreshToken) {
     throw new Error(

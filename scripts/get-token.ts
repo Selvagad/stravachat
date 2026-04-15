@@ -35,7 +35,7 @@ const authUrl =
   `&response_type=code` +
   `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
   `&scope=${SCOPES}` +
-  `&approval_prompt=auto`;
+  `&approval_prompt=force`;
 
 console.log("\n=== Strava OAuth Token Helper ===\n");
 console.log("1. Open this URL in your browser:\n");
